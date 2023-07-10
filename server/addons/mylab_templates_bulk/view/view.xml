@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="event_event_bulk_send_templates" model="ir.ui.view">
+        <field name="name">event event bulk send templates</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_send_badge_email" string="Bulk Send" type="object" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+    
+
+</odoo>
+
+

@@ -1,0 +1,7 @@
+2023-06-22 16:59:42,273 7576 INFO ? odoo: Odoo version 16.0-20230521 
+2023-06-22 16:59:42,273 7576 INFO ? odoo: Using configuration file at D:\unity_green\server\odoo.conf 
+2023-06-22 16:59:42,273 7576 INFO ? odoo: addons paths: ['D:\\unity_green\\server\\odoo\\addons', 'd:\\unity_green\\sessions\\addons\\16.0', 'd:\\unity_green\\server\\odoo\\addons'] 
+2023-06-22 16:59:42,273 7576 INFO ? odoo: database: openpg@localhost:5432 
+2023-06-22 16:59:43,303 7576 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at D:\unity_green\thirdparty\wkhtmltopdf.exe 
+2023-06-22 16:59:45,202 7576 INFO ? odoo.service.server: Initiating shutdown 
+2023-06-22 16:59:45,203 7576 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 

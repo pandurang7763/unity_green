@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicle_trip_print_action" model="ir.actions.report">
+        <field name="name">Print Trip</field>
+        <field name="model">unity.green.solutions.fruitly.trip.details</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">unity.green.solutions.report_trip</field>
+        <field name="report_file">unity.green.solutions_trip</field>
+    </record>
+</odoo>

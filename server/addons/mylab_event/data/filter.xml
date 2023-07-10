@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_partner_view_install" model="ir.ui.view">
+            <field name="name">res.partner.search.install</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="event" widget="many2many_tags" store="1"/>
+                    <!--                  <filter string="Customer Invoices" name="customer" domain="[('customer_rank','>', 0)]"/>-->
+                    <!--                   <filter string="Events" name="events" domain="[('name','=','message_partner_ids.name')]"/>-->
+                    <!--                   <separator/>-->
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+       <record id="res_partner_view_search_inte" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit.inte</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='supplier']" position="before">
+                   <filter string="Events" name="events" />
+
+                   <separator/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

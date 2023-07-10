@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_user_inherit_view_form_for_jobs" model="ir.ui.view">
+        <field name="name">res_user_inherit_view_jobs</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='login']" position="after">
+                <field name="new_job"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <template id="registration_attendee_details_questions_id" inherit_id="website_event.registration_attendee_details"
+              name="Registration Attendee Details with questions id">
+        <xpath expr="//input[@class='d-none']" position="before">
+            <div class="modal-header align-items-center">
+                <select class="form-control" name="select_title" t-attf-name="#{counter}-select_title"
+                        t-att-value="default_first_attendee.get('select_title', '') if counter == 1 else ''">
+                    <option t-esc="default_first_attendee.get('select_title', '')"/>
+<!--                    <t t-if="default_first_attendee.get('select_title', '') and default_first_attendee.get('select_title', '') != 'Mr'">-->
+                        <option t-att-value="Mr">Mr</option>
+<!--                    </t>-->
+<!--                    <t t-if="default_first_attendee.get('select_title', '') and default_first_attendee.get('select_title', '') != 'Miss'">-->
+                        <option>Miss</option>
+<!--                    </t>-->
+<!--                    <t t-if="default_first_attendee.get('select_title', '') and default_first_attendee.get('select_title', '') != 'Dr'">-->
+                        <option>Dr</option>
+<!--                    </t>-->
+<!--                    <t t-if="default_first_attendee.get('select_title', '') and default_first_attendee.get('select_title', '') != 'Mrs'">-->
+                        <option>Mrs</option>
+<!--                    </t>-->
+
+                </select>
+
+            </div>
+        </xpath>
+    </template>
+
+
+    <record id="res_partner_inherit_view_form_for_jobs" model="ir.ui.view">
+        <field name="name">res_partner_inherit_view_jobs</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="user_title"/>
+
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+
+</odoo>

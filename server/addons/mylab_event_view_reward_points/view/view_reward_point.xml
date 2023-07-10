@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="event_event_view_reward_points" model="ir.ui.view">
+        <field name="name">event_event_view_reward_points</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_send_coupon']" position="after">
+
+                <button name="action_open_reward_points"  string="View Reward Points" type="object"
+                            class="oe_highlight"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

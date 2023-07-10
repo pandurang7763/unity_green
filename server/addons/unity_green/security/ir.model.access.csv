@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+unity_green.access_fruitly_trip_details,access_fruitly_trip_details,unity_green.model_fruitly_trip_details,,1,1,1,1
+unity_green.access_fruitly_trips_lines,access_fruitly_trips_lines,unity_green.model_fruitly_trips_lines,,1,1,1,1

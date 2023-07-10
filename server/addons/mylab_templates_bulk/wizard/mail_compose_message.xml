@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="event_bulk_mail_send_view" model="ir.ui.view">
+        <field name="name">event bulk attendee mail view</field>
+        <field name="model">attendee.send.mail</field>
+        <field name="arch" type="xml">
+            <form>
+                <script>$(document).ready(function(){ $('.modal-dialog').css({'max-width': '450px'});
+                    $('.modal-content').css({'max-height': '46%'});
+                    });
+                </script>
+                <field name ="model" invisible="1"/>
+                <label for="event_id"/>
+                <field name="event_id" invisible="1"/>
+                <label for="state"/>
+                <field name="state"/>
+                <div>
+                <label for="load_template_id"/>
+                <field name="load_template_id"/>
+                </div>
+
+                <footer>
+                    <button name="action_send_email_bulk" string="send" type="object" class="btn-primary"
+                            data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+
+        </field>
+    </record>
+
+
+</odoo>
+

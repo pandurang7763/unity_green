@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="fruitly_trip_details_view_tree" model="ir.ui.view">
+        <field name="name">Trip Details</field>
+        <field name="model">fruitly.trip.details</field>
+        <field name="arch" type="xml">
+
+            <tree>
+
+                <field name="date"/>
+
+                <field name="name"/>
+                <field name="start_time"/>
+
+                <field name="end_time"/>
+                <field name="vehicle_net_time"/>
+
+                <field name="diesel_litre"/>
+                <field name="net_km"/>
+                <field name="start"/>
+                <field name="end"/>
+
+
+
+                <field name="labours_contract_name"/>
+                <field name="labours_number_of"/>
+                <field name="perday_labours"/>
+                <field name="total_labours_charge"/>
+                <field name="perday_vehicle"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="fruitly_trip_details_view_form" model="ir.ui.view">
+        <field name="name">Raw Stock</field>
+        <field name="model">fruitly.trip.details</field>
+        <field name="arch" type="xml">
+            <!-- <header>
+                <button name="create_purchase_order"
+                                                string="Confirm Order" type="object" class="oe_highlight"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+            </header> -->
+            <form string="Trip Detail">
+                <sheet>
+                    <group col="1">
+                        <group>
+                            <group string="Vehicle">
+                                <field name="date"/>
+                                <field name="name"/>
+                                <field name="start_time"/>
+                                <field name="end_time"/>
+                                <field name="vehicle_net_time"/>
+                                <field name="start"/>
+                                <field name="end"/>
+                                <field name="net_km"/>
+                                <field name="diesel_litre"/>
+                            </group>
+                            <group string="Labours">
+                                
+                                <field name="labours_contract_name"/>
+                                <field name="labours_number_of"/>
+                                <field name="perday_labours"/>
+                                <field name="total_labours_charge"/>
+                                <field name="perday_vehicle"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Trips" name="trips">
+                                <field name="trips_lines_ids">
+                                    <tree editable="Top">
+                                        <field name="trip_id"/>
+                                        <field name="product_id" widget="many2one"></field>
+                                        <field name="description"></field>
+                                        <field name="weight"></field>
+                                        <field name="zone"></field>
+                                        <field name="unloading_id"></field>
+                                        <field name="stock_desk_id"></field>
+                                        <field name="picking_type_id"></field>
+                                        <field name="in_time"/>
+                                        <field name="out_time"/>
+                                        <field name="net_time" widget="float_net_time"/>
+                                        <field name="total"/>
+                                        <button name="create_stock"
+                                                string="Create Stock" type="object" class="oe_highlight"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="fruitly_trip_details_action" model="ir.actions.act_window">
+        <field name="name">Trip Details</field>
+        <field name="res_model">fruitly.trip.details</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="fruitly_trip_details_menu_action" action="fruitly_trip_details_action" parent="fleet.menu_root"
+              name="Vehicle Trips"/>
+
+
+</odoo>

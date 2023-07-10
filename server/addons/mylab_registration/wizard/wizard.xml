@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="event_bulk_mail_send" model="ir.ui.view">
+        <field name="name">event bulk attendee mail</field>
+        <field name="model">attendee.send.mail</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="load_template_id"/>
+                <field name="event_id"/>
+            </form>
+            <footer>
+                <button name="action_send_email_bulk" string="send" type="object" class="btn-primary"
+                        data-hotkey="q"/>
+                <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+            </footer>
+
+
+        </field>
+    </record>
+
+
+</odoo>
+

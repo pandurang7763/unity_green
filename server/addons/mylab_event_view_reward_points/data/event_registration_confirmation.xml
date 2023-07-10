@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<odoo>
+        <data noupdate="0">
+
+             <record id="event_registration" model="mail.template">
+            <field name="name">Event: Event Registration</field>
+            <field name="model_id" ref="event.model_event_registration"/>
+            <field name="subject">Congratulations! Your Registration Was Successful</field>
+            <field name="email_from">{{ (object.event_id.organizer_id.email_formatted or object.event_id.user_id.email_formatted or '') }}</field>
+            <field name="email_to">{{ (object.email and '"%s" &lt;%s&gt;' % (object.name, object.email) or object.partner_id.email_formatted or '') }}</field>
+            <field name="description">Sent to attendees after registering to an event</field>
+            <field name="body_html" type="html">
+<table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tr><td align="center">
+<t t-set="date_begin" t-value="format_datetime(object.event_id.date_begin, tz='UTC', dt_format=&quot;yyyyMMdd'T'HHmmss'Z'&quot;)"/>
+<t t-set="date_end" t-value="format_datetime(object.event_id.date_end, tz='UTC', dt_format=&quot;yyyyMMdd'T'HHmmss'Z'&quot;)"/>
+<t t-set="is_online" t-value="'is_published' in object.event_id and object.event_id.is_published"/>
+<t t-set="event_organizer" t-value="object.event_id.organizer_id"/>
+<t t-set="event_address" t-value="object.event_id.address_id"/>
+<table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+<tbody>
+    <!-- HEADER -->
+    <tr>
+        <td align="center" style="min-width: 590px;">
+            <table width="590" border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tr><td valign="middle">
+                    <span style="font-size: 10px;">Your registration</span><br/>
+                    <span style="font-size: 20px; font-weight: bold;">
+                        <t t-out="object.name or ''">Oscar Morgan</t>
+                    </span>
+                </td><td valign="middle" align="right">
+                    <t t-if="is_online">
+                        <a t-att-href="object.event_id.website_url"
+                            style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #ff8b3d; border: 0px solid #875A7B; border-radius:3px">
+                            View Event
+                        </a>
+                    </t>
+                    <t t-else="">
+                        <img t-att-src="'/logo.png?company=%s' % object.company_id.id" style="padding: 0px; margin: 0px; height: auto; width: 80px;" t-att-alt="'%s' % object.company_id.name"/>
+                    </t>
+                </td></tr>
+                <tr><td colspan="2" style="text-align:center;">
+                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                </td></tr>
+            </table>
+        </td>
+    </tr>
+    <!-- EVENT DESCRIPTION -->
+    <div style="text-align:justify;">
+    <tr>
+    <div style="color:black">
+        <td align="center" style="min-width: 590px;">
+            <table width="590" border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                <tr><td valign="top" style="font-size: 14px;">
+                    <div>
+                        Dear <t t-out="object.name or ''">Oscar Morgan</t>,<br/><br></br>
+
+                        <div style="color:black">
+                        We are delighted to inform you that your registration for <strong> <t t-out="object.event_id.name"></t>-<t t-out="object.event_id.title"></t> </strong>  was successful! We appreciate your interest and look forward to your active participation. 
+                        <br></br>
+                        <br></br>
+                        <strong>Key Details</strong>
+                        <br></br>
+                        
+                        <strong>Webinar Name</strong> : <t t-out="object.event_id.name"></t>-<t t-out="object.event_id.title"></t>
+                      
+                        <br></br>
+                        <br></br>
+                        <strong>Date</strong> :  <t t-out="object.event_id.date_begin" t-options='{"widget": "datetime", "date_only": True, "hide_seconds": True}'></t>
+                        <br></br>
+                        <strong>Time</strong> : <t t-out="object.event_id.date_begin" t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'></t> 
+                        <br></br>
+                        <br></br>
+                        <strong>Webinar Link</strong> : <t t-out="object.event_id.webinar_link"></t>
+                        <br></br>
+                        <br></br>
+                        <div style="color:black">
+                        We recommend adding this event to your calendar to ensure you don't miss it. If you have any questions or need further assistance, please feel free to reach out to our support team at <b>business@mylabglobal.com</b>
+                        <br></br>
+                        <br></br>
+                        Thank you once again for choosing to be a part of <strong><t t-out="object.event_id.name"></t>-<t t-out="object.event_id.title"></t> </strong> . We are excited to have you join us. 
+                        <br></br>
+                        <br></br>
+
+                        Best regards, 
+                        <br></br>
+                        Team Mylab
+                        </div>
+                        </div>
+                    
+                    </div>
+
+                </td></tr>
+                <tr><td style="text-align:center;">
+                  <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                </td></tr>
+            </table>
+        </td>
+        </div>
+    </tr>
+    </div>
+
+</tbody>
+</table>
+</td></tr>
+<!-- FOOTER BY -->
+<tr><td align="center" style="min-width: 590px;">
+    <t t-if="object.company_id">
+        <table width="590" border="0" cellpadding="0" cellspacing="0" style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+        <tr><td style="text-align: center; font-size: 14px;">
+            Sent by <a target="_blank" t-attf-href="{{ object.company_id.website }}" style="color: #875A7B;" t-out="object.company_id.name or ''">YourCompany</a>
+            <t t-if="is_online">
+                <br />
+                Discover <a href="/event" style="color:#875A7B;">all our events</a>.
+            </t>
+        </td></tr>
+        </table>
+    </t>
+</td></tr>
+</table>
+            </field>
+
+        </record>
+        </data>
+</odoo>

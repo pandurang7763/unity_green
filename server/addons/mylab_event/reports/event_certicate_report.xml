@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="paperformat_event_certification" model="report.paperformat">
+            <field name="name">Event Certification</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">400</field>
+            <field name="page_width">330</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="action_event_certification" model="ir.actions.report">
+            <field name="name">Event Certificate</field>
+            <field name="model">event.registration</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">mylab_event.event_registration_certificate</field>
+            <field name="report_file">mylab_event.event_registration_certificate</field>
+            <field name="print_report_name">'Event Certificate - %s - %s' % ((object.event_id.name or
+                'Event').replace('/',''), (object.name or '').replace('/',''))
+            </field>
+            <field name="binding_model_id" ref="model_event_registration"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="mylab_event.paperformat_event_certification"/>
+        </record>
+
+
+
+         <record id="paperformat_event_certification_natspert" model="report.paperformat">
+            <field name="name">Event Certification Natspert</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">400</field>
+            <field name="page_width">350</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="action_event_certification_natspert" model="ir.actions.report">
+            <field name="name">Event Natspert Certificate </field>
+            <field name="model">event.registration</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">mylab_event.event_registration_certificate_natspert</field>
+            <field name="report_file">mylab_event.event_registration_certificate_natspert</field>
+            <field name="print_report_name">'Event Natspert Certificate - %s - %s' % ((object.event_id.name or
+                'Event').replace('/',''), (object.name or '').replace('/',''))
+            </field>
+            <field name="binding_model_id" ref="model_event_registration"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="mylab_event.paperformat_event_certification_natspert"/>
+        </record>
+
+
+<!--        <record id="report_loyalty_card" model="ir.actions.report">-->
+<!--            <field name="name">Coupon Code</field>-->
+<!--            <field name="model">loyalty.card</field>-->
+<!--            <field name="report_type">qweb-pdf</field>-->
+<!--            <field name="report_name">.loyalty_report_mylab</field>-->
+<!--            <field name="report_file">loyalty.loyalty_report_mylab</field>-->
+<!--            <field name="binding_model_id" ref="model_loyalty_card"/>-->
+<!--            <field name="binding_type">report</field>-->
+<!--        </record>-->
+
+
+    </data>
+</odoo>

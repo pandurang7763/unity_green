@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+<record id="sale_order_reward_pts" model="ir.ui.view">
+        <field name="name">sale_order_reward_pts</field>
+        <field name="model">loyalty.program</field>
+        <field name="inherit_id" ref="loyalty.loyalty_program_gift_ewallet_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='mail_template_id']" position="after">
+                <field name="mail_tempalte_for_sale"/>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

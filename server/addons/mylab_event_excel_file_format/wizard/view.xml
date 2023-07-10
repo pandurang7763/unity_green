@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="download_excel_file_format" model="ir.ui.view">
+        <field name="name">download_excel_file_format</field>
+        <field name="model">attendee.upload.file</field>
+        <field name="inherit_id" ref="import_excel_for_mylab_event.event_import_attendee_upload_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='upload_file']" position="after">
+               <button name="download_format" string="Download Template" type="object"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="mail_template_remaining_reward_points" model="mail.template">
+            <field name="name">Event:Remaining Reward Points</field>
+            <field name="model_id" ref="loyalty.model_loyalty_card"/>
+            <field name="subject">Reward Points For Attending NAT Webinar</field>
+            <field name="email_from">{{ object.program_id.company_id.email }}</field>
+            <field name="partner_to">{{ object._get_mail_partner().id }}</field>
+            <field name="lang">{{ object._get_mail_partner().lang }}</field>
+            <field name="description">Sent to customer with coupon information</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="width:100%; margin:0px auto; background:#ffffff; color:#333333;">
+                    <tbody>
+
+                        <tr style="margin-top: 16px">
+                            <td valign="top" style="font-size: 14px;">
+
+                                Dear
+                                <t t-out="object._get_mail_partner().name or ''">Brandon Freeman</t>
+                                <br></br>
+                                <br></br>
+                                You still have
+                                <strong>
+                                    <t t-out="object.points_display"></t>
+                                </strong>
+                                Reward Points that you can redeem on our website. These points can be used towards Our
+                                exciting gifts It's our way of saying thank you for your valuable time and dedication.
+                                <br></br>
+                                <br></br>
+
+                                To redeem your reward points, simply log in to your account on our website and navigate
+                                to the Shop section. If you have any questions or need further assistance, please feel
+                                free to reach out to our support team at
+                                <strong>business@mylabglobal.com</strong>
+                                <br></br>
+                                <br></br>
+                                <strong>Shop Link : https://beta.coderize.in/shop</strong>
+                                <br></br>
+                                <br></br>
+                                Thank you for being a part of our community, and we look forward to your continued
+                                participation in our future endeavors.
+                                <br></br>
+                                <br></br>
+
+
+                                Best regards,
+                                <br></br>
+                                Team Mylab
+                                <t t-if="object._get_signature()">
+                                    <br></br>
+                                </t>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </field>
+
+        </record>
+    </data>
+</odoo>

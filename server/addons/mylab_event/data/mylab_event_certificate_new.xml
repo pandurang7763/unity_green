@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="event_certification_natspert" model="mail.template">
+            <field name="name">Event: Event Natspert Certification</field>
+            <field name="model_id" ref="event.model_event_registration"/>
+            <field name="subject">Congratulations! Here's Your Webinar Attendance Certificate</field>
+            <field name="email_from">{{ (object.event_id.organizer_id.email_formatted or
+                object.event_id.user_id.email_formatted or '') }}
+            </field>
+            <field name="email_to">{{ (object.email and '"%s" &lt;%s&gt;' % (object.name, object.email) or
+                object.partner_id.email_formatted or '') }}
+            </field>
+            <field name="description">Sent to attendees after attending to an event</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0"
+                       style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                    <tr>
+                        <td align="center">
+                            <t t-set="date_begin"
+                               t-value="format_datetime(object.event_id.date_begin, tz='UTC', dt_format=&quot;yyyyMMdd'T'HHmmss'Z'&quot;)"/>
+                            <t t-set="date_end"
+                               t-value="format_datetime(object.event_id.date_end, tz='UTC', dt_format=&quot;yyyyMMdd'T'HHmmss'Z'&quot;)"/>
+                            <t t-set="is_online"
+                               t-value="'is_published' in object.event_id and object.event_id.is_published"/>
+                            <t t-set="event_organizer" t-value="object.event_id.organizer_id"/>
+                            <t t-set="event_address" t-value="object.event_id.address_id"/>
+                            <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                   style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+                                <tbody>
+                                    <!-- HEADER -->
+                                    <tr>
+                                        <td align="center" style="min-width: 590px;">
+                                            <table width="590" border="0" cellpadding="0" cellspacing="0"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                    <td valign="middle">
+                                                        <span style="font-size: 10px;">Certificate</span>
+                                                        <br/>
+                                                        <span style="font-size: 20px; font-weight: bold;">
+                                                            <t t-out="object.name or ''">Oscar Morgan</t>
+                                                        </span>
+                                                    </td>
+                                                    <td valign="middle" align="right">
+                                                        <t t-if="is_online">
+                                                            <a t-att-href="object.event_id.website_url"
+                                                               style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #ff8b3d; border: 0px solid #875A7B; border-radius:3px">
+                                                                View Event
+                                                            </a>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img t-att-src="'/logo.png?company=%s' % object.company_id.id"
+                                                                 style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                                 t-att-alt="'%s' % object.company_id.name"/>
+                                                        </t>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <!-- EVENT DESCRIPTION -->
+                                    <div style="text-align:justify;">
+                                    <tr>
+                                    
+                                        <td align="center" style="min-width: 590px;">
+                                            <table width="590" border="0" cellpadding="0" cellspacing="0"
+                                                   style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                                <tr>
+                                                <td valign="top" style="font-size: 14px;">
+                                                    <div>
+                                                      Dear <t t-out="object.name"/>
+                                                    </div>
+                                                    Thank you for attending our NAT Webinar in the series "<strong><t t-out="object.event_id.name"/>-<t t-out="object.event_id.title"></t></strong>"
+                                                    <br></br>
+                                                    <br></br>
+                                                    
+                                                    We hope this email finds you well. Your engagement and contribution truly made a difference, and we are thrilled to had you as part of our audience. 
+                                                        
+                                                       
+                                                    <br></br>
+                                                    <br></br>
+                                                    <div style="color:black">
+
+                                                     As a token of our appreciation, we are pleased to present you with an official <strong>Attendance Certificate</strong> for attending the webinar.
+                                                    <br></br>
+                                                    <br></br>
+                                                    To watch the recorded session of webinar click on the link : <t t-out="object.event_id.recorded_session"></t>
+                                                    <br></br>
+                                                    <br></br>
+                                                   We look forward to your continued participation in our future endeavors. Drop us an email at <strong>business@mylabglobal.com</strong> for any further inquiries.
+                                                  
+                                                   
+
+                                                    Best regards, 
+                                                    <br></br>
+                                                    Team Mylab
+                                                    </div>
+                                                    
+                                                    
+
+
+
+                                                    <td style="text-align:center;">
+                                                        <hr width="100%"
+                                                            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                    </td>
+                                                </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        
+                                    </tr>
+                                    </div>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </field>
+            <field name="report_template" ref="action_event_certification_natspert"/>
+            <field name="report_name">Event Natspert Certificate - {{ (object.event_id.name or 'Event').replace('/','') }}</field>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+        </record>
+    </data>
+</odoo>

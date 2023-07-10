@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="my_account_reward" name="Link to frontend portal" inherit_id="portal.portal_my_home">
+        <xpath expr="//*[@id='oe_structure_portal_my_home_2']" position="before">
+            <div style="border:2px solid;border-color:white;height:35px;width:538px;background-color:white;margin-left:2.7px">
+            <span style="margin-left:10px">You Have
+            <t t-set="user_points" t-value="request.env['loyalty.card'].search([('partner_id', '=', request.env.user.partner_id.id)])"/>
+            <b>
+                <t t-if ="user_points.points_display">
+                    <t t-esc="user_points.points_display"/>
+                </t>
+                <t t-else="">
+                    <t t-if="user_points.points_display == 0.00"/> 
+                    <t t-esc="0.00"/> <span>Pts</span>
+                </t>
+
+            </b> In Your eWallet Account.</span>
+            </div>
+
+        </xpath>
+    </template>
+</odoo>
